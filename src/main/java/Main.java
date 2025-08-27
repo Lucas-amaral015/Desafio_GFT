@@ -1,21 +1,21 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        List<Pagamento> listaPagamentos = new ArrayList<>();
 
-        System.out.println("Informe um número: ");
-        int numeroInformado = sc.nextInt();
+        listaPagamentos.add(new PagamentoCartao());
+        listaPagamentos.add(new PagamentoBoleto());
 
-        RedutorDigital redutor = new RedutorDigital(numeroInformado);
-        int resultadoFinal = redutor.reduzirParaUmDigito();
 
-        System.out.println("Resultado final: " + resultadoFinal);
+        for (int indice = 0; indice < listaPagamentos.size(); indice++) {
+            Pagamento pagamento = listaPagamentos.get(indice);
+            pagamento.processarPagamento();
+        }
 
-        sc.close();
     }
-
-
 }
